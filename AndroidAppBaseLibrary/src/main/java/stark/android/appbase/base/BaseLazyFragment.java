@@ -8,7 +8,7 @@ import android.view.View;
  * Created by jihongwen on 16/8/27.
  */
 
-public abstract class BaseLazyFragment<T> extends BaseFragment<T> {
+public abstract class BaseLazyFragment extends BaseFragment {
 
     protected boolean isVisible;
 

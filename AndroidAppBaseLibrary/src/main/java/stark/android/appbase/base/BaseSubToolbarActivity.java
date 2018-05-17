@@ -8,7 +8,7 @@ import android.view.MenuItem;
  * Created by jihongwen on 16/8/4.
  */
 
-public abstract class BaseSubToolbarActivity<T> extends BaseToolbarActivity<T> {
+public abstract class BaseSubToolbarActivity extends BaseToolbarActivity {
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {

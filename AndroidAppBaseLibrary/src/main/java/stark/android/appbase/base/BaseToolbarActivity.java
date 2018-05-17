@@ -1,8 +1,7 @@
 package stark.android.appbase.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import stark.android.appbase.R;
 
@@ -10,28 +9,22 @@ import stark.android.appbase.R;
  * Created by jihongwen on 16/8/4.
  */
 
-public abstract class BaseToolbarActivity<T> extends BaseActivity<T> {
+public abstract class BaseToolbarActivity extends BaseActivity {
 
     Toolbar toolbar;
 
-    @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+    TextView middleTitle;
+
+    protected void setToolbar(CharSequence title) {
+        setToolbar(title, false);
+    }
+
+    protected void setToolbar(CharSequence title, boolean isSub) {
+        toolbar = findViewById(R.id.toolbar);
+        middleTitle = findViewById(R.id.middleTitle);
         toolbar.setTitle("");
+        middleTitle.setText(title);
         setSupportActionBar(toolbar);
-        setToolbar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(isSub);
     }
-
-    @Override
-    public void getIntentData() {
-
-    }
-
-    public void setToolbar(Toolbar toolbar) {
-
-    }
-
-    public abstract int getToolbarId();
-
 }

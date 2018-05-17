@@ -3,9 +3,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0-beta3'
+        classpath 'com.android.tools.build:gradle:3.1.2'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -15,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
     }
 }
 
@@ -26,14 +28,23 @@ task clean(type: Delete) {
 ext {
     // Sdk and tools
     minSdkVersion = 15
-    targetSdkVersion = 24
-    compileSdkVersion = 24
-    buildToolsVersion = '24.0.1'
+    targetSdkVersion = 26
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.1'
+    supportLibraryVersion = '26.1.0'
 
-    // App dependencies
-    junitVersion = '4.12'
-    supportLibraryVersion = '24.2.0'
-    retrofit2Version = "2.0.2"
-    dbflowVersion = "3.0.1"
+    junitTest = 'junit:junit:4.12'
+    testRunner = 'com.android.support.test:runner:1.0.1'
+    espressoCore = 'com.android.support.test.espresso:espresso-core:3.0.1'
+    appcompatv7 = "com.android.support:appcompat-v7:$supportLibraryVersion"
+    cardviewv7 = "com.android.support:cardview-v7:$supportLibraryVersion"
+    recyclerviewv7 = "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    supportannotations = "com.android.support:support-annotations:$supportLibraryVersion"
+    supportv4 = "com.android.support:support-v4:$supportLibraryVersion"
+    supportDesign = "com.android.support:design:$supportLibraryVersion"
+    okhttp3 = 'com.squareup.okhttp3:okhttp:3.8.0'
+    retrofit = 'com.squareup.retrofit2:retrofit:2.3.0'
+    retrofitConverterGson = 'com.squareup.retrofit2:converter-gson:2.3.0'
+    retrofitAdapterRxjava = 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
 
 }
