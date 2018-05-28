@@ -1,6 +1,7 @@
 package stark.android.appbase.base;
 
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import stark.android.appbase.R;
@@ -23,8 +24,19 @@ public abstract class BaseToolbarActivity extends BaseActivity {
         toolbar = findViewById(R.id.toolbar);
         middleTitle = findViewById(R.id.middleTitle);
         toolbar.setTitle("");
-        middleTitle.setText(title);
+        if (middleTitle != null)
+            middleTitle.setText(title);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(isSub);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
