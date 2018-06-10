@@ -1,6 +1,8 @@
 package stark.android.appbase.recycleview;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,6 +12,11 @@ public abstract class BaseRecycleViewAdapter<T> extends RecyclerView.Adapter<Bas
 
     protected List<T> items;
 
+    protected LayoutInflater mInflater;
+
+    public BaseRecycleViewAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+    }
 
     public void setItems(List<T> items) {
         this.items = items;

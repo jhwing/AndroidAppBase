@@ -10,7 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 public abstract class BaseActivity extends AppCompatActivity {
 
 
-    public void startFragment(Fragment fragment, int resId) {
-        getSupportFragmentManager().beginTransaction().add(resId, fragment).commit();
+    public void startFragment(Fragment fragment, int resId, String tag) {
+        getSupportFragmentManager().beginTransaction()
+                .add(resId, fragment, tag).commit();
+    }
+
+    public Fragment findFragment(String tag) {
+        return getSupportFragmentManager().findFragmentByTag(tag);
     }
 }
