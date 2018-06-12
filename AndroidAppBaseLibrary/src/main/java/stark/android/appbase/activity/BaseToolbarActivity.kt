@@ -11,6 +11,8 @@ import stark.android.appbase.R
 
 open class BaseToolbarActivity : BaseActivity() {
 
+    internal var isSubActivity = false
+
     internal var toolbar: Toolbar? = null
 
     internal var middleTitle: TextView? = null

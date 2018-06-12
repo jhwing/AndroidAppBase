@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity
 
 open class BaseActivity : AppCompatActivity() {
 
-    internal var isSubActivity = false
-
     fun startFragment(fragment: Fragment, resId: Int, tag: String) {
         supportFragmentManager.beginTransaction()
                 .add(resId, fragment, tag).commit()

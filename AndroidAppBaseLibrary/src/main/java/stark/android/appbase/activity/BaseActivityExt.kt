@@ -6,7 +6,7 @@ import android.support.v7.widget.Toolbar
 
 fun <T : ViewModel> BaseActivity.obtainViewModel(modelClass: Class<T>) = ViewModelProviders.of(this).get(modelClass)
 
-fun BaseActivity.setToolbarAsUpEnable(toolbar: Toolbar?, isSub: Boolean = false, title: String = "") {
+fun BaseToolbarActivity.setToolbarAsUpEnable(toolbar: Toolbar?, isSub: Boolean = false, title: String = "") {
     isSubActivity = isSub
     toolbar?.title = title
     setSupportActionBar(toolbar)
