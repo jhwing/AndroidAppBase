@@ -9,11 +9,7 @@ abstract class BaseRecycleViewAdapter<T>(context: Context) : RecyclerView.Adapte
 
     internal var items: List<T>? = null
 
-    var mInflater: LayoutInflater? = null
-
-    init {
-        mInflater = LayoutInflater.from(context)
-    }
+    open var mInflater: LayoutInflater = LayoutInflater.from(context)
 
     fun setItems(items: List<T>) {
         this.items = items

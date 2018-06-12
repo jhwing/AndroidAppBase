@@ -29,5 +29,9 @@ dependencies {
     testImplementation rootProject.ext.junitTest
     androidTestImplementation rootProject.ext.testRunner
     androidTestImplementation rootProject.espressoCore
+    implementation rootProject.ext.ankoCommons
+    implementation rootProject.ext.timber
+    implementation rootProject.ext.recyclerviewFlexibledivider
+
     implementation project(":AndroidAppBaseLibrary")
 }

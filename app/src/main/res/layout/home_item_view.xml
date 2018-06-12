@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="homeItem"
+            type="stark.android.appbase.demo.home.HomeItem" />
+
+        <variable
+            name="listener"
+            type="stark.android.appbase.demo.home.HomeListItemListener" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sk_base_item_bg_selector"
+        android:onClick="@{() -> listener.onItemClick(homeItem)}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{homeItem.itemText}"
+                android:textColor="#343233"
+                android:textSize="16sp"
+                tools:text="item text" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{homeItem.itemDesc}"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp"
+                tools:text="item desc" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

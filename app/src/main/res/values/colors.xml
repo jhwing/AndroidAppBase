@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="base_item_normal">#FFFFFF</color>
     <color name="base_item_pressed">#F2F2F2</color>
+    <color name="demo_list_divider_color">#6c6c6c</color>
 </resources>

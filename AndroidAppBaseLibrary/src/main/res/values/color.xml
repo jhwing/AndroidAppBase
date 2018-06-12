@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sk_base_normal_color">#FFFFFF</color>
+    <color name="sk_base_pressed_color">#F2F2F2</color>
+    <color name="sk_base_divider_color">#F5F5F5</color>
+</resources>

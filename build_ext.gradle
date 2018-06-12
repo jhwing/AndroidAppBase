@@ -34,9 +34,13 @@ ext {
     fresco = 'com.facebook.fresco:fresco:1.5.0'
     frescoGif = 'com.facebook.fresco:animated-gif:1.5.0'
     frescoOkHttp3 = 'com.facebook.fresco:imagepipeline-okhttp3:1.5.0'
+    // anko
+    ankoCommons = 'org.jetbrains.anko:anko-commons:0.10.5'
     // other
+    smartRefreshLayout = 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-6'
     timber = 'com.jakewharton.timber:timber:4.7.0'
     sofia = 'com.yanzhenjie:sofia:1.0.5'
     jodaTime = 'joda-time:joda-time:2.9.9'
+    recyclerviewFlexibledivider = 'com.yqritc:recyclerview-flexibledivider:1.4.0'
 
 }
