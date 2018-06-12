@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -21,14 +23,30 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(dir: 'libs', include: ['*.jar'])
     testImplementation rootProject.ext.junitTest
     androidTestImplementation rootProject.ext.testRunner
     androidTestImplementation rootProject.espressoCore
-    implementation rootProject.ext.supportDesign
-    implementation rootProject.ext.appcompatv7
-    implementation rootProject.ext.recyclerviewv7
-    implementation rootProject.ext.cardviewv7
-    implementation rootProject.ext.retrofit
-    implementation rootProject.ext.retrofitConverterGson
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api rootProject.ext.supportDesign
+    api rootProject.ext.appcompatv7
+    api rootProject.ext.recyclerviewv7
+    api rootProject.ext.cardviewv7
+    api rootProject.ext.retrofit
+    api rootProject.ext.retrofitConverterGson
+    api rootProject.ext.fresco
+    api rootProject.ext.frescoGif
+    api rootProject.ext.frescoOkHttp3
+    // ViewModel and LiveData
+    api rootProject.ext.archLifecycleExtensions
+    //implementation rootProject.ext.archLifecycleRuntime
+    annotationProcessor rootProject.ext.archLifecycleCompiler
+    kapt rootProject.ext.archLifecycleCompiler
+    // room
+    api rootProject.ext.archRoomRuntime
+    annotationProcessor rootProject.ext.archRoomCompiler
+    kapt rootProject.ext.archRoomCompiler
+}
+repositories {
+    mavenCentral()
 }

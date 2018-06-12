@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidAppBase</string>
+    <string name="app_home_intro">app base intro</string>
 </resources>
