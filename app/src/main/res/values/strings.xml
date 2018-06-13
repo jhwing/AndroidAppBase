@@ -1,9 +1,4 @@
 <resources>
     <string name="app_name">AndroidAppBase</string>
     <string name="app_home_intro">app base intro</string>
-    <array name="app_demo_home_list">
-        <item>activity 动画切换demo</item>
-        <item>RecycleView deme</item>
-        <item>自定义view demo</item>
-    </array>
 </resources>

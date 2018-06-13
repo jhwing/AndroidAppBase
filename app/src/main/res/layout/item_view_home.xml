@@ -40,6 +40,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:singleLine="true"
                 android:text="@{homeItem.itemDesc}"
                 android:textColor="#6c6c6c"
                 android:textSize="14sp"

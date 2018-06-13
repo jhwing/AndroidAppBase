@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.View
 
 import stark.android.appbase.activity.BaseToolbarActivity
+import stark.android.appbase.activity.setToolbar
 import stark.android.appbase.demo.home.HomeFragment
 import stark.android.appbase.demo.more.MoreFragment
 import stark.android.appbase.fragment.FragmentHelper

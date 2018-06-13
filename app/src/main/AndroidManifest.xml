@@ -3,6 +3,7 @@
     package="stark.android.appbase.demo">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,6 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".anim.activity.AnimEnterExitDemoActivity" />
+        <activity android:name=".recyclerview.RecycleViewDemoActivity" />
+        <activity android:name=".webview.WebViewDemoActivity" />
+        <activity android:name=".viewpager.ViewPagerDemoActivity" />
+        <activity android:name=".utils.UtilsDemoActivity" />
+        <activity android:name=".textview.TextViewDemoActivity" />
+        <activity android:name=".share.ShareDemoActivity" />
+        <activity android:name=".net.NetDemoActivity" />
+        <activity android:name=".imagecache.ImageCacheDemoActivity" />
+        <activity android:name=".db.DbDemoActivity" />
     </application>
 
 </manifest>

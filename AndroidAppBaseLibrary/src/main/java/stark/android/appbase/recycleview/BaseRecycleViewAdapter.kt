@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
-abstract class BaseRecycleViewAdapter<T>(context: Context) : RecyclerView.Adapter<BaseRecycleViewHolder<T>>() {
+abstract class BaseRecycleViewAdapter<T>(context: Context?) : RecyclerView.Adapter<BaseRecycleViewHolder<T>>() {
 
     internal var items: List<T>? = null
 

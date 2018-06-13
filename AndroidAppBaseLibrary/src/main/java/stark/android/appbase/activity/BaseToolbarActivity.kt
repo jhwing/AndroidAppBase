@@ -17,13 +17,6 @@ open class BaseToolbarActivity : BaseActivity() {
 
     internal var middleTitle: TextView? = null
 
-    fun setToolbar(title: CharSequence, isSub: Boolean = false) {
-        toolbar = findViewById(R.id.toolbar)
-        middleTitle = findViewById(R.id.middleTitle)
-        middleTitle?.text = title
-        setToolbarAsUpEnable(toolbar, isSub)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
