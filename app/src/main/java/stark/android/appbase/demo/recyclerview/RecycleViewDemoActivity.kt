@@ -11,5 +11,6 @@ class RecycleViewDemoActivity : BaseToolbarActivity() {
         super.onCreate(savedInstanceState)
         setBaseContentView()
         setToolbar("recycleview demo", true)
+        startFragment(RecycleViewDemoActivityFragment(), "recycle_view_fragment")
     }
 }

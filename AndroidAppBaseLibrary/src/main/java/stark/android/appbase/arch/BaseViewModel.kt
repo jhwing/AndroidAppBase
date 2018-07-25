@@ -4,7 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.content.res.Resources
 
-open class BaseViewModel(application: Application) : AndroidViewModel(application) {
+abstract class BaseViewModel(application: Application) : AndroidViewModel(application), IBaseLoadData {
 
     fun getString(resId: Int): String {
         return getResources().getString(resId)

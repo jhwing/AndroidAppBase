@@ -19,6 +19,7 @@
 
         <activity android:name=".anim.activity.AnimEnterExitDemoActivity" />
         <activity android:name=".recyclerview.RecycleViewDemoActivity" />
+        <activity android:name=".recyclerview.demo.RecycleLayoutManagerDemoActivity" />
         <activity android:name=".webview.WebViewDemoActivity" />
         <activity android:name=".viewpager.ViewPagerDemoActivity" />
         <activity android:name=".utils.UtilsDemoActivity" />

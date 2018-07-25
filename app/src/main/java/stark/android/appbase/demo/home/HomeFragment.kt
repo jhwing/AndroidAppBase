@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
+import org.jetbrains.anko.toast
 import stark.android.appbase.demo.R
 import stark.android.appbase.demo.databinding.FragmentHomeBinding
 import stark.android.appbase.fragment.BaseFragment
@@ -20,6 +21,8 @@ class HomeFragment : BaseFragment(), HomeListItemListener {
             val intent = Intent()
             intent.setClassName(context, homeItem.activity)
             startActivity(intent)
+        } else {
+            activity?.toast("activity is empty! don't know where to go")
         }
     }
 

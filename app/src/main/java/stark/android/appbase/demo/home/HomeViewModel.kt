@@ -3,11 +3,11 @@ package stark.android.appbase.demo.home
 import android.app.Application
 import android.databinding.ObservableArrayList
 import stark.android.appbase.arch.BaseViewModel
-import stark.android.appbase.demo.R
 import stark.android.appbase.demo.anim.activity.AnimEnterExitDemoActivity
 import stark.android.appbase.demo.db.DbDemoActivity
 import stark.android.appbase.demo.imagecache.ImageCacheDemoActivity
 import stark.android.appbase.demo.net.NetDemoActivity
+import stark.android.appbase.demo.recyclerview.RecycleViewDemoActivity
 import stark.android.appbase.demo.share.ShareDemoActivity
 import stark.android.appbase.demo.utils.UtilsDemoActivity
 import stark.android.appbase.demo.viewpager.ViewPagerDemoActivity
@@ -17,7 +17,7 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     var items = ObservableArrayList<HomeItem>()
 
-    fun load() {
+    override fun load() {
 
         items.add(HomeItem(
                 "activity 动画切换demo",
@@ -26,8 +26,8 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
         items.add(HomeItem(
                 "recycleview demo",
-                "adapter refresh anim",
-                AnimEnterExitDemoActivity::class.java.name))
+                "LayoutManager adapter refresh anim",
+                RecycleViewDemoActivity::class.java.name))
 
         items.add(HomeItem(
                 "viewpager demo",
