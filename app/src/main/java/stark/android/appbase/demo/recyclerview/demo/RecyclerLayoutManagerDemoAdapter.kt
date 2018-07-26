@@ -20,7 +20,7 @@ class RecyclerLayoutManagerDemoAdapter(var context: Context) : BaseRecycleViewAd
     class RecyclerLayoutManagerDemoViewHolder(itemView: View) : BaseRecycleViewHolder<String>(itemView) {
         var itemText: TextView = itemView.findViewById(R.id.itemText)
         override fun bindTo(t: String) {
-            Log.d("jihongwen", "")
+            Log.d("jihongwen", "RecyclerLayoutManagerDemoViewHolder bindTo t: $t")
             itemText.text = t
         }
     }

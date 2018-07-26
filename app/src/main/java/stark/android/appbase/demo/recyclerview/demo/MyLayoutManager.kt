@@ -25,6 +25,7 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
         if (state.isPreLayout) {
             return
         }
+        mLayoutState.mRecycle = false
         //在布局之前，将所有的子View先Detach掉，放入到Scrap缓存中
         Log.d("jihongwen", "onLayoutChildren")
         val extra = getExtraLayoutSpace(state)
@@ -32,6 +33,7 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
         detachAndScrapAttachedViews(recycler)
         // 定义竖直方向的偏移量
         updateLayoutState()
+        mLayoutState.mInfinite = resolveIsInfinite()
         fill(recycler, mLayoutState, state)
     }
 
@@ -52,8 +54,7 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
      */
     private fun updateLayoutState(layoutDirection: Int, requiredSpace: Int,
                                   canUseExistingSpace: Boolean, state: RecyclerView.State) {
-        mLayoutState.mAvailable = mOrientationHelper.endAfterPadding
-        mLayoutState.mOffset = 0
+        mLayoutState.mInfinite = resolveIsInfinite()
         mLayoutState.mExtra = getExtraLayoutSpace(state)
         mLayoutState.mLayoutDirection = layoutDirection
         var scrollingOffset: Int
@@ -95,7 +96,7 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
 
     fun fill(recycler: RecyclerView.Recycler, layoutState: LayoutState, state: RecyclerView.State): Int {
         val start = layoutState.mAvailable
-        var remainingSpace = mLayoutState.mAvailable
+        var remainingSpace = mLayoutState.mAvailable + mLayoutState.mExtra
 
         while (remainingSpace > 0 && layoutState.hasMore(state)) {
             var child = mLayoutState.next(recycler)
@@ -112,9 +113,99 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
             remainingSpace -= consumed
             mLayoutState.mAvailable -= consumed
 
+            if (layoutState.mScrollingOffset != LayoutState.SCROLLING_OFFSET_NaN) {
+                layoutState.mScrollingOffset += consumed
+                if (layoutState.mAvailable < 0) {
+                    layoutState.mScrollingOffset += layoutState.mAvailable
+                }
+                recycleByLayoutState(recycler, layoutState)
+            }
+
             Log.d("jihongwen", "mLayoutState.mAvailable " + mLayoutState.mAvailable)
         }
         return start - layoutState.mAvailable
+    }
+
+    private fun recycleByLayoutState(recycler: RecyclerView.Recycler, layoutState: LayoutState) {
+        if (!layoutState.mRecycle || layoutState.mInfinite) {
+            return
+        }
+        if (layoutState.mLayoutDirection == LayoutState.LAYOUT_START) {
+            recycleViewsFromEnd(recycler, layoutState.mScrollingOffset)
+        } else {
+            recycleViewsFromStart(recycler, layoutState.mScrollingOffset)
+        }
+    }
+
+    private fun recycleViewsFromEnd(recycler: RecyclerView.Recycler, dt: Int) {
+        val childCount = childCount
+        if (dt < 0) {
+            return
+        }
+        val limit = mOrientationHelper.end - dt
+        if (mShouldReverseLayout) {
+            for (i in 0 until childCount) {
+                val child = getChildAt(i)
+                if (mOrientationHelper.getDecoratedStart(child) < limit || mOrientationHelper.getTransformedStartWithDecoration(child) < limit) {
+                    // stop here
+                    recycleChildren(recycler, 0, i)
+                    return
+                }
+            }
+        } else {
+            for (i in childCount - 1 downTo 0) {
+                val child = getChildAt(i)
+                if (mOrientationHelper.getDecoratedStart(child) < limit || mOrientationHelper.getTransformedStartWithDecoration(child) < limit) {
+                    // stop here
+                    recycleChildren(recycler, childCount - 1, i)
+                    return
+                }
+            }
+        }
+    }
+
+    private fun recycleChildren(recycler: RecyclerView.Recycler, startIndex: Int, endIndex: Int) {
+        if (startIndex == endIndex) {
+            return
+        }
+
+        Log.d("jihongwen", "Recycling " + Math.abs(startIndex - endIndex) + " items")
+        if (endIndex > startIndex) {
+            for (i in endIndex - 1 downTo startIndex) {
+                removeAndRecycleViewAt(i, recycler)
+            }
+        } else {
+            for (i in startIndex downTo endIndex + 1) {
+                removeAndRecycleViewAt(i, recycler)
+            }
+        }
+    }
+
+    private fun recycleViewsFromStart(recycler: RecyclerView.Recycler, dt: Int) {
+        if (dt < 0) {
+            return
+        }
+        // ignore padding, ViewGroup may not clip children.
+        val childCount = childCount
+        if (mShouldReverseLayout) {
+            for (i in childCount - 1 downTo 0) {
+                val child = getChildAt(i)
+                if (mOrientationHelper.getDecoratedEnd(child) > dt || mOrientationHelper.getTransformedEndWithDecoration(child) > dt) {
+                    // stop here
+                    recycleChildren(recycler, childCount - 1, i)
+                    return
+                }
+            }
+        } else {
+            for (i in 0 until childCount) {
+                val child = getChildAt(i)
+                if (mOrientationHelper.getDecoratedEnd(child) > dt || mOrientationHelper.getTransformedEndWithDecoration(child) > dt) {
+                    // stop here
+                    recycleChildren(recycler, 0, i)
+                    return
+                }
+            }
+        }
     }
 
     override fun canScrollVertically(): Boolean {
@@ -130,8 +221,7 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
         if (childCount == 0 || dy == 0) {
             return 0
         }
-        var travel = dy
-
+        mLayoutState.mRecycle = true
         val layoutDirection = if (dy > 0) LayoutState.LAYOUT_END else LayoutState.LAYOUT_START
         val absDy = Math.abs(dy)
         updateLayoutState(layoutDirection, absDy, true, state)
@@ -145,6 +235,10 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
         mOrientationHelper.offsetChildren(-scrolled)
         mLayoutState.mLastScrollDelta = scrolled
         return scrolled
+    }
+
+    internal fun resolveIsInfinite(): Boolean {
+        return mOrientationHelper.mode == View.MeasureSpec.UNSPECIFIED && mOrientationHelper.end == 0
     }
 
     fun getVerticalSpace(): Int {
@@ -164,6 +258,8 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
     class LayoutState {
 
         companion object {
+            val SCROLLING_OFFSET_NaN = Integer.MIN_VALUE
+
             // 布局方向
             val LAYOUT_START = -1
             // 布局方向
@@ -174,6 +270,9 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
         }
 
         //
+
+        var mRecycle = true
+        var mInfinite = false
         var mOffset = 0
         var mExtra = 0
         var mAvailable = 0
