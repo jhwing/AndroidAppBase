@@ -11,5 +11,6 @@ class NetDemoActivity : BaseToolbarActivity() {
         super.onCreate(savedInstanceState)
         setBaseContentView()
         setToolbar("net demo", true)
+        startFragment(NetDemoActivityFragment(), "net_fragment")
     }
 }

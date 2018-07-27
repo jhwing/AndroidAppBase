@@ -26,6 +26,7 @@ ext {
     archRoomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
     // net
     okhttp3 = 'com.squareup.okhttp3:okhttp:3.8.0'
+    okhttp3LoggingInterceptor = 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     retrofit = 'com.squareup.retrofit2:retrofit:2.3.0'
     retrofitConverterGson = 'com.squareup.retrofit2:converter-gson:2.3.0'
     retrofitAdapterRxjava = 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'

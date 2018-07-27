@@ -6,6 +6,7 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.webkit.WebSettings;
 
 public class NetUtil {
@@ -18,11 +19,19 @@ public class NetUtil {
                 userAgent = System.getProperty("http.agent");
             }
             StringBuffer sb = getFormatUA(userAgent);
-            return sb.toString() + "/" + agent;
+            if (TextUtils.isEmpty(agent)) {
+                return sb.toString();
+            } else {
+                return sb.toString() + "/" + agent;
+            }
         } else {
             userAgent = System.getProperty("http.agent");
             StringBuffer sb = getFormatUA(userAgent);
-            return sb.toString() + "/" + agent;
+            if (TextUtils.isEmpty(agent)) {
+                return sb.toString();
+            } else {
+                return sb.toString() + "/" + agent;
+            }
         }
     }
 
