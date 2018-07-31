@@ -6,6 +6,7 @@ import stark.android.appbase.arch.BaseViewModel
 import stark.android.appbase.demo.anim.activity.AnimEnterExitDemoActivity
 import stark.android.appbase.demo.db.DbDemoActivity
 import stark.android.appbase.demo.imagecache.ImageCacheDemoActivity
+import stark.android.appbase.demo.navigation.NavigationDemoActivity
 import stark.android.appbase.demo.net.NetDemoActivity
 import stark.android.appbase.demo.recyclerview.RecycleViewDemoActivity
 import stark.android.appbase.demo.share.ShareDemoActivity
@@ -63,5 +64,10 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
                 "share demo",
                 "coming soon",
                 ShareDemoActivity::class.java.name))
+
+        items.add(HomeItem(
+                "navigation demo",
+                "coming soon",
+                NavigationDemoActivity::class.java.name))
     }
 }

@@ -29,6 +29,9 @@
         <activity android:name=".net.NetDemoActivity" />
         <activity android:name=".imagecache.ImageCacheDemoActivity" />
         <activity android:name=".db.DbDemoActivity" />
+        <activity android:name=".navigation.NavigationDemoActivity" />
+        <activity android:name=".navigation.nav1.Nav1Activity" />
+        <activity android:name=".navigation.drag.DragDemoActivity" />
     </application>
 
 </manifest>
