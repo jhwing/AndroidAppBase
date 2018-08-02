@@ -39,13 +39,52 @@
                     android:text="2" />
 
                 <TextView
+                    android:id="@+id/testDrawView3"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginLeft="240dp"
                     android:layout_marginTop="240dp"
                     android:background="@android:color/holo_purple"
                     android:gravity="center"
+                    android:tag="drawView"
                     android:text="3" />
+
+
+                <FrameLayout
+                    android:id="@+id/slidingUpPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/holo_green_dark">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="底部SlidingUpPanelLayout" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/drawPanel"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom"
+                    android:background="@android:color/white"
+                    android:tag="drawPanel">
+
+                    <ImageView
+                        android:id="@+id/openBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_keyboard_arrow_up_black_24dp" />
+
+                    <ImageView
+                        android:id="@+id/closeBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_close_black_24dp" />
+                </FrameLayout>
             </stark.android.appbase.demo.navigation.drag.TestViewGroup>
 
         </FrameLayout>
