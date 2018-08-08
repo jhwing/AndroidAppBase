@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
 import stark.android.appbase.demo.R
 
@@ -23,6 +22,7 @@ class TestViewGroup @JvmOverloads constructor(
     private var slidingUpPanel: View? = null
     private var openBtn: View? = null
     private var closeBtn: View? = null
+    private var moreBtn: View? = null
 
     enum class PanelState {
         EXPLODED, HIDDEN
@@ -34,6 +34,7 @@ class TestViewGroup @JvmOverloads constructor(
         super.onFinishInflate()
         openBtn = findViewById(R.id.openBtn)
         closeBtn = findViewById(R.id.closeBtn)
+        moreBtn = findViewById(R.id.moreBtn)
         closeBtn?.alpha = 0f
         drawPanel = findViewById(R.id.drawPanel)
         testDrawView3 = findViewById(R.id.testDrawView3)
@@ -46,6 +47,10 @@ class TestViewGroup @JvmOverloads constructor(
                 panelState = PanelState.HIDDEN
                 smoothSlideTo(oriSlidingUpTop)
             }
+        }
+
+        moreBtn?.setOnClickListener {
+            requestLayout()
         }
     }
 
@@ -88,7 +93,6 @@ class TestViewGroup @JvmOverloads constructor(
             super.onViewPositionChanged(changedView, left, top, dx, dy)
             Log.d("jihongwen", "left=$left top=$top dx=$dx dy=$dy")
             changeBtn(top)
-            changedView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
         }
 
         override fun onViewCaptured(capturedChild: View, activePointerId: Int) {

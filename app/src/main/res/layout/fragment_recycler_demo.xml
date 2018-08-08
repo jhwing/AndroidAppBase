@@ -11,4 +11,11 @@
         android:layout_marginTop="15dp"
         android:text="layout manager demo" />
 
+    <Button
+        android:id="@+id/gridlayoutManagerDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Grid layout manager demo" />
+
 </LinearLayout>

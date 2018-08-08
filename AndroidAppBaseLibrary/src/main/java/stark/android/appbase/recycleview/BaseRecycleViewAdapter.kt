@@ -7,13 +7,17 @@ import android.view.ViewGroup
 
 abstract class BaseRecycleViewAdapter<T>(context: Context?) : RecyclerView.Adapter<BaseRecycleViewHolder<T>>() {
 
-    internal var items: List<T>? = null
+    internal var items: MutableList<T>? = null
 
     open var mInflater: LayoutInflater = LayoutInflater.from(context)
 
-    fun setItems(items: List<T>) {
+    fun setItems(items: MutableList<T>) {
         this.items = items
         notifyDataSetChanged()
+    }
+
+    fun getItems() :MutableList<T>?{
+        return items
     }
 
     fun addItems(items: MutableList<T>) {
