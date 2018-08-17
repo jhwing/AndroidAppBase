@@ -11,6 +11,7 @@ import stark.android.appbase.demo.net.NetDemoActivity
 import stark.android.appbase.demo.recyclerview.RecycleViewDemoActivity
 import stark.android.appbase.demo.share.ShareDemoActivity
 import stark.android.appbase.demo.utils.UtilsDemoActivity
+import stark.android.appbase.demo.viewdraghelper.ViewDragHelperDemoActivity
 import stark.android.appbase.demo.viewpager.ViewPagerDemoActivity
 import stark.android.appbase.demo.webview.WebViewDemoActivity
 
@@ -69,5 +70,10 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
                 "navigation demo",
                 "coming soon",
                 NavigationDemoActivity::class.java.name))
+
+        items.add(HomeItem(
+                "view drag helper demo",
+                "coming soon",
+                ViewDragHelperDemoActivity::class.java.name))
     }
 }

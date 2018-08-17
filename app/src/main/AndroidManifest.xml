@@ -33,6 +33,7 @@
         <activity android:name=".navigation.nav1.Nav1Activity" />
         <activity android:name=".navigation.drag.DragDemoActivity" />
         <activity android:name=".recyclerview.demo.RecycleGridLayoutManagerDemoActivity" />
+        <activity android:name=".viewdraghelper.ViewDragHelperDemoActivity" />
     </application>
 
 </manifest>

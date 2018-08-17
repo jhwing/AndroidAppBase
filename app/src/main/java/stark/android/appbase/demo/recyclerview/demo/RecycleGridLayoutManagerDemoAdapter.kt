@@ -24,7 +24,7 @@ class RecycleGridLayoutManagerDemoAdapter(var context: Context) : BaseRecycleVie
     }
 
     override fun onCreateViewHolderDelegate(parent: ViewGroup, viewType: Int): BaseRecycleViewHolder<String> {
-        return RecycleGridLayoutManagerDemoViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view_recycler_layout_manager_demo, parent, false))
+        return RecycleGridLayoutManagerDemoViewHolder(LayoutInflater.from(context).inflate(R.layout.item_view_recycler_grid_layout_manager_demo, parent, false))
     }
 
     class RecycleGridLayoutManagerDemoViewHolder(view: View) : BaseRecycleViewHolder<String>(view) {
