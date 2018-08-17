@@ -34,6 +34,7 @@
         <activity android:name=".navigation.drag.DragDemoActivity" />
         <activity android:name=".recyclerview.demo.RecycleGridLayoutManagerDemoActivity" />
         <activity android:name=".viewdraghelper.ViewDragHelperDemoActivity" />
+        <activity android:name=".dialog.DialogDemoActivity" />
     </application>
 
 </manifest>

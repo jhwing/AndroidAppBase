@@ -5,6 +5,7 @@ import android.databinding.ObservableArrayList
 import stark.android.appbase.arch.BaseViewModel
 import stark.android.appbase.demo.anim.activity.AnimEnterExitDemoActivity
 import stark.android.appbase.demo.db.DbDemoActivity
+import stark.android.appbase.demo.dialog.DialogDemoActivity
 import stark.android.appbase.demo.imagecache.ImageCacheDemoActivity
 import stark.android.appbase.demo.navigation.NavigationDemoActivity
 import stark.android.appbase.demo.net.NetDemoActivity
@@ -75,5 +76,10 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
                 "view drag helper demo",
                 "coming soon",
                 ViewDragHelperDemoActivity::class.java.name))
+
+        items.add(HomeItem(
+                "dialog demo",
+                "bottom dialog",
+                DialogDemoActivity::class.java.name))
     }
 }
