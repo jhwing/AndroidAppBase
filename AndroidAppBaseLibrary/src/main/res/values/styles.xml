@@ -20,6 +20,12 @@
         <item name="android:windowIsFloating">true</item>//悬浮
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/SK.Base.Dialog.Animation</item>
+    </style>
+
+    <style name="SK.Base.Dialog.Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/dialog_out_bottom</item>
     </style>
 
 </resources>
