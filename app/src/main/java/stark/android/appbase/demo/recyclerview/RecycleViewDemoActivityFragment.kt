@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_recycler_demo.*
 import stark.android.appbase.demo.R
+import stark.android.appbase.demo.recyclerview.demo.MyGridGroupViewActivity
 import stark.android.appbase.demo.recyclerview.demo.RecycleGridLayoutManagerDemoActivity
 import stark.android.appbase.demo.recyclerview.demo.RecycleLayoutManagerDemoActivity
 import stark.android.appbase.fragment.BaseFragment
@@ -24,6 +25,9 @@ class RecycleViewDemoActivityFragment : BaseFragment() {
         }
         gridlayoutManagerDemo.setOnClickListener {
             startActivity(Intent(context, RecycleGridLayoutManagerDemoActivity::class.java))
+        }
+        myGridGroupDemo.setOnClickListener {
+            startActivity(Intent(context, MyGridGroupViewActivity::class.java))
         }
     }
 }

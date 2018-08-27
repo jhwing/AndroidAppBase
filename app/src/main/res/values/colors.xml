@@ -6,5 +6,5 @@
     <color name="base_item_normal">#FFFFFF</color>
     <color name="base_item_pressed">#F2F2F2</color>
     <color name="demo_grid_item_color">@android:color/holo_green_dark</color>
-    <color name="demo_grid_item_selected_color">@android:color/holo_blue_light</color>
+    <color name="demo_grid_item_selected_color">#ff7db808</color>
 </resources>
