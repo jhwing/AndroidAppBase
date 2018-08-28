@@ -202,6 +202,10 @@ open class MyGridGroupView : ViewGroup {
         }
     }
 
+    fun getTempListIndex(): IntArray? {
+        return tempIndexList
+    }
+
     private fun getScrollDx(): Int {
         val offset = Math.abs(mViewConfig.dxOffset)
         var dx = -mViewConfig.dxOffset
