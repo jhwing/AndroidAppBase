@@ -127,7 +127,8 @@ open class MyGridGroupView : ViewGroup {
                     view.setBackgroundColor(itemViewBgColor)
                     val vIndex = getChildViewIndex(v)
                     val viewIndex = getChildViewIndex(view)
-                    onItemMovedListener?.onItemMoved()
+                    if (vIndex == viewIndex)
+                        onItemMovedListener?.onItemMoved()
                     Log.d("jihongwen", "ACTION_DRAG_ENDED vIndex=$vIndex viewIndex=$viewIndex")
                 }
             }
