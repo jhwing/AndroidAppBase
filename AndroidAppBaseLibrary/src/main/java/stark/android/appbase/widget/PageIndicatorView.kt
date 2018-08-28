@@ -1,10 +1,10 @@
-package stark.android.appbase.demo.recyclerview.demo
+package stark.android.appbase.widget
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
-import stark.android.appbase.demo.R
+import stark.android.appbase.R
 
 class PageIndicatorView @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0

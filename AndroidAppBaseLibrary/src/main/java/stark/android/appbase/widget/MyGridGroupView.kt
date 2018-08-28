@@ -1,4 +1,4 @@
-package stark.android.appbase.demo.recyclerview.demo
+package stark.android.appbase.widget
 
 import android.animation.ArgbEvaluator
 import android.animation.TypeEvaluator
@@ -19,7 +19,6 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.TranslateAnimation
 import android.widget.Adapter
 import android.widget.Scroller
-import stark.android.appbase.demo.R
 
 class MyGridGroupView : ViewGroup {
 
@@ -27,6 +26,10 @@ class MyGridGroupView : ViewGroup {
     private val mMaxFlingVelocity = ViewConfiguration.get(context).scaledMaximumFlingVelocity
     private val mMinFlingVelocity = ViewConfiguration.get(context).scaledMinimumFlingVelocity
     private var velocityTracker = VelocityTracker.obtain()
+
+    private var shadowColor = Color.parseColor("#FFFFFF")
+    private var itemViewBgColor = Color.parseColor("#FF669900")
+    private var itemViewSelectedBgColor = Color.parseColor("#FF7DB808")
 
     private var mAdapter: Adapter? = null
     private var mViewConfig = ViewConfig(context)
@@ -123,7 +126,7 @@ class MyGridGroupView : ViewGroup {
                 ACTION_DRAG_ENDED -> {// 当系统结束拖拽操作时，View对象拖拽监听器会接收这种事件操作类型。这种操作类型之前不一定是ACTION_DROP事件。如果系统发送了一个ACTION_DROP事件，那么接收ACTION_DRAG_ENDED操作类型不意味着放下操作成功了。监听器必须调用getResult()方法来获得响应ACTION_DROP事件中的返回值。如果ACTION_DROP事件没有被发送，那么getResult()会返回false。
                     val view = event.localState as View
                     view.alpha = 1.0f
-                    view.setBackgroundColor(resources.getColor(R.color.demo_grid_item_color))
+                    view.setBackgroundColor(itemViewBgColor)
                     val vIndex = getChildViewIndex(v)
                     val viewIndex = getChildViewIndex(view)
                     Log.d("jihongwen", "ACTION_DRAG_ENDED vIndex=$vIndex viewIndex=$viewIndex")
@@ -249,15 +252,13 @@ class MyGridGroupView : ViewGroup {
         translateAnimation.fillAfter = true
         translateAnimation.interpolator = DecelerateInterpolator()
         view.clearAnimation()
-        val color = this.resources.getColor(R.color.demo_grid_item_selected_color)
-        val color2 = this.resources.getColor(R.color.demo_grid_item_color)
-        val ofObject = ValueAnimator.ofObject(ArgbEvaluator() as TypeEvaluator<*>, *arrayOf<Any>(color, color2))
-        ofObject.duration = 250L
-        ofObject.addUpdateListener { valueAnimator ->
-            view.setBackgroundColor(valueAnimator.animatedValue as Int)
+        val valueAnimator = ValueAnimator.ofObject(ArgbEvaluator() as TypeEvaluator<*>, *arrayOf<Any>(itemViewSelectedBgColor, itemViewBgColor))
+        valueAnimator.duration = 250L
+        valueAnimator.addUpdateListener { it ->
+            view.setBackgroundColor(it.animatedValue as Int)
         }
         view.startAnimation(translateAnimation as Animation)
-        ofObject.start()
+        valueAnimator.start()
     }
 
     private fun changePosition(startIndex: Int, endIndex: Int) {
@@ -430,6 +431,10 @@ class MyGridGroupView : ViewGroup {
 
     class DragShadowBuilder(view: View, val startX: Float, val startY: Float, val context: Context) : View.DragShadowBuilder(view) {
 
+        var shadowColor = Color.parseColor("#FFFFFF")
+        private var itemViewBgColor = Color.parseColor("#FF669900")
+        private var itemViewSelectedBgColor = Color.parseColor("#FF7DB808")
+
         val p1 = Paint()
         val p2 = Paint()
 
@@ -439,15 +444,15 @@ class MyGridGroupView : ViewGroup {
                 val rect = Rect()
                 view.getDrawingRect(rect)
                 val rectF = RectF(rect)
-                this.p1.setShadowLayer(50.0f, 0.0f, 0.0f, context.resources.getColor(R.color.sk_base_normal_color))
+                this.p1.setShadowLayer(50.0f, 0.0f, 0.0f, shadowColor)
                 canvas.translate(100.0f, 100.0f)
                 canvas.drawRoundRect(rectF, 0.0f, 0.0f, this.p1)
                 // view selected
-                view.setBackgroundColor(context.resources.getColor(R.color.demo_grid_item_selected_color))
+                view.setBackgroundColor(itemViewSelectedBgColor)
                 view.draw(canvas)
                 --rect.right
                 --rect.bottom
-                this.p2.color = context.resources.getColor(R.color.demo_grid_item_selected_color)
+                this.p2.color = itemViewSelectedBgColor
                 this.p2.style = Paint.Style.STROKE
                 this.p2.strokeWidth = 1.0f
                 canvas.drawRect(rect, this.p2)

@@ -9,6 +9,7 @@ import org.jetbrains.anko.toast
 import stark.android.appbase.activity.BaseToolbarActivity
 import stark.android.appbase.activity.setToolbar
 import stark.android.appbase.demo.R
+import stark.android.appbase.widget.MyGridGroupView
 
 class MyGridGroupViewActivity : BaseToolbarActivity() {
 
