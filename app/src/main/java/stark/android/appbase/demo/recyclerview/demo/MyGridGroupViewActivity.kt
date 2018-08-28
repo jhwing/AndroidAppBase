@@ -23,9 +23,11 @@ class MyGridGroupViewActivity : BaseToolbarActivity() {
                 add("item:$i")
             }
         }
-        myGridGroupDemo.setOnItemClickListener(View.OnClickListener { v ->
-            val itemText = v.findViewById<TextView>(R.id.itemText)
-            toast("click " + itemText.text)
+        myGridGroupDemo.setOnItemClickListener(object : MyGridGroupView.OnItemClickListener {
+            override fun onItemClick(view: View, index: Int) {
+                val itemText = view.findViewById<TextView>(R.id.itemText)
+                toast("click " + itemText.text)
+            }
         })
         myGridGroupDemo.setOnPageChangeListener(object : MyGridGroupView.OnPageChangeListener {
             override fun onPageChange(page: Int) {

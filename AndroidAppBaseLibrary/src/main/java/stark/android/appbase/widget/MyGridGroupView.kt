@@ -11,9 +11,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.*
 import android.view.DragEvent.*
-import android.view.View.OnDragListener
-import android.view.View.OnLongClickListener
-import android.view.View.OnTouchListener
+import android.view.View.*
 import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.TranslateAnimation
@@ -49,7 +47,7 @@ open class MyGridGroupView : ViewGroup {
     private var childOnDragListener: OnDragListener? = null
     private var childOnLongClickListener: OnLongClickListener? = null
 
-    private var onItemClickListener: View.OnClickListener? = null
+    private var onItemClickListener: OnItemClickListener? = null
     private var onPageChangeListener: OnPageChangeListener? = null
     private var onItemMovedListener: OnItemMovedListener? = null
     private var onItemExchangedListener: OnItemExchangedListener? = null
@@ -142,7 +140,7 @@ open class MyGridGroupView : ViewGroup {
         }
     }
 
-    fun setOnItemClickListener(onItemClickListener: OnClickListener) {
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
         this.onItemClickListener = onItemClickListener
     }
 
@@ -170,13 +168,19 @@ open class MyGridGroupView : ViewGroup {
                 view.setOnLongClickListener(childOnLongClickListener)
                 view.setOnDragListener(childOnDragListener)
                 if (onItemClickListener != null) {
-                    view.setOnClickListener(onItemClickListener)
+                    view.setOnClickListener {
+                        onItemClickListener?.onItemClick(it, getChildViewIndex(it))
+                    }
                 }
                 addView(view)
                 tempIndexList!![i] = i
             }
         }
         page = Math.ceil((childCount / mViewConfig.pageViewCounts).toDouble()).toInt()
+    }
+
+    fun getAdapter(): Adapter? {
+        return mAdapter
     }
 
     fun setCurrentPage() {
@@ -287,6 +291,7 @@ open class MyGridGroupView : ViewGroup {
         val tempIndex = this.tempIndexList!![index1]
         this.tempIndexList!![index1] = this.tempIndexList!![index2]
         this.tempIndexList!![index2] = tempIndex
+        onItemExchangedListener?.onItemExchanged(index1, index2)
     }
 
     /**
