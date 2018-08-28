@@ -20,7 +20,7 @@ import android.view.animation.TranslateAnimation
 import android.widget.Adapter
 import android.widget.Scroller
 
-class MyGridGroupView : ViewGroup {
+open class MyGridGroupView : ViewGroup {
 
     private val mTouchSlop = ViewConfiguration.get(context).scaledPagingTouchSlop
     private val mMaxFlingVelocity = ViewConfiguration.get(context).scaledMaximumFlingVelocity
