@@ -325,7 +325,7 @@ open class MyGridGroupView : ViewGroup {
         val childCount = childCount
         mViewConfig.setParentSize(measuredWidth, measuredHeight)
         for (i in 0 until childCount) {
-            val child = getChildAt(i)
+            val child = getChildAt(tempIndexList!![i])
             val rect = mViewConfig.getChildRect(i)
             child.measure(MeasureSpec.makeMeasureSpec(rect.width(), MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(rect.height(), MeasureSpec.EXACTLY))
             child.layout(rect.left, rect.top, rect.right, rect.bottom)
