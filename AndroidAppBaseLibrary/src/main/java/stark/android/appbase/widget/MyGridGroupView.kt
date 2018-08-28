@@ -327,9 +327,16 @@ open class MyGridGroupView : ViewGroup {
         return -1
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+        val width = View.MeasureSpec.getSize(widthMeasureSpec)
+        val height = View.MeasureSpec.getSize(heightMeasureSpec)
+        setMeasuredDimension(width, height)
+    }
+
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         val childCount = childCount
-        mViewConfig.setParentSize(measuredWidth, measuredHeight)
+        mViewConfig.setParentSize(measuredWidth, height)
         for (i in 0 until childCount) {
             val child = getChildAt(tempIndexList!![i])
             val rect = mViewConfig.getChildRect(i)
