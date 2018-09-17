@@ -144,6 +144,11 @@ open class MyGridGroupView : ViewGroup {
 
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
         this.onItemClickListener = onItemClickListener
+        for (i in 0 until childCount) {
+            getChildAt(i).setOnClickListener {
+                onItemClickListener.onItemClick(it, i)
+            }
+        }
     }
 
     fun setOnItemExchangedListener(onItemExchangedListener: OnItemExchangedListener) {
