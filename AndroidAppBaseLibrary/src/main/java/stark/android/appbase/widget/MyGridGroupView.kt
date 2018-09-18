@@ -26,7 +26,8 @@ open class MyGridGroupView : ViewGroup {
     private var velocityTracker = VelocityTracker.obtain()
 
     private var shadowColor = Color.parseColor("#FFFFFF")
-    private var itemViewBgColor = Color.parseColor("#FF669900")
+    //private var itemViewBgColor = Color.parseColor("#FF669900")
+    private var itemViewBgColor = Color.TRANSPARENT
     private var itemViewSelectedBgColor = Color.parseColor("#FF7DB808")
 
     private var mAdapter: Adapter? = null
