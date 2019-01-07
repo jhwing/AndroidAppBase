@@ -35,8 +35,8 @@
         <activity android:name=".recyclerview.demo.RecycleGridLayoutManagerDemoActivity" />
         <activity android:name=".viewdraghelper.ViewDragHelperDemoActivity" />
         <activity android:name=".dialog.DialogDemoActivity" />
-        <activity android:name=".recyclerview.demo.GridGroupViewActivity" />
         <activity android:name=".recyclerview.demo.MyGridGroupViewActivity" />
+        <activity android:name=".recyclerview.demo.GridImageItemActivity" />
     </application>
 
 </manifest>

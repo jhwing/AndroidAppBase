@@ -25,4 +25,11 @@
         android:layout_marginTop="15dp"
         android:text="My Grid group demo" />
 
+    <Button
+        android:id="@+id/gridImageList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Grid Image List" />
+
 </LinearLayout>
