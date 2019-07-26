@@ -1,11 +1,11 @@
 package stark.android.appbase.demo.recyclerview.demo
 
 import android.content.Context
-import android.support.v7.widget.OrientationHelper
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.OrientationHelper
 
 class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
 
@@ -57,35 +57,41 @@ class MyLayoutManager(context: Context) : RecyclerView.LayoutManager() {
         mLayoutState.mInfinite = resolveIsInfinite()
         mLayoutState.mExtra = getExtraLayoutSpace(state)
         mLayoutState.mLayoutDirection = layoutDirection
-        var scrollingOffset: Int
+        var scrollingOffset: Int? = null
         if (layoutDirection == LayoutState.LAYOUT_END) {
             mLayoutState.mExtra = mOrientationHelper.endPadding
             // 布局方向上第一个子view
             val child: View? = getChildClosestToEnd()
-            mLayoutState.mItemDirection = if (mShouldReverseLayout) LayoutState.ITEM_DIRECTION_HEAD else LayoutState.ITEM_DIRECTION_TAIL
-            mLayoutState.mCurrentPosition = getPosition(child) + mLayoutState.mItemDirection
-            mLayoutState.mOffset = mOrientationHelper.getDecoratedEnd(child)
-            scrollingOffset = mOrientationHelper.getDecoratedEnd(child) - mOrientationHelper.endAfterPadding
+            if (child != null) {
+                mLayoutState.mItemDirection = if (mShouldReverseLayout) LayoutState.ITEM_DIRECTION_HEAD else LayoutState.ITEM_DIRECTION_TAIL
+                mLayoutState.mCurrentPosition = getPosition(child) + mLayoutState.mItemDirection
+                mLayoutState.mOffset = mOrientationHelper.getDecoratedEnd(child)
+                scrollingOffset = mOrientationHelper.getDecoratedEnd(child) - mOrientationHelper.endAfterPadding
+            }
         } else {
             val child: View? = getChildClosestToStart()
-            mLayoutState.mExtra = mOrientationHelper.startAfterPadding
-            mLayoutState.mItemDirection = if (mShouldReverseLayout) LayoutState.ITEM_DIRECTION_TAIL else LayoutState.ITEM_DIRECTION_HEAD
-            mLayoutState.mCurrentPosition = getPosition(child) + mLayoutState.mItemDirection
-            mLayoutState.mOffset = mOrientationHelper.getDecoratedStart(child)
-            scrollingOffset = -mOrientationHelper.getDecoratedStart(child) + mOrientationHelper.startAfterPadding
+            if (child != null) {
+                mLayoutState.mExtra = mOrientationHelper.startAfterPadding
+                mLayoutState.mItemDirection = if (mShouldReverseLayout) LayoutState.ITEM_DIRECTION_TAIL else LayoutState.ITEM_DIRECTION_HEAD
+                mLayoutState.mCurrentPosition = getPosition(child) + mLayoutState.mItemDirection
+                mLayoutState.mOffset = mOrientationHelper.getDecoratedStart(child)
+                scrollingOffset = -mOrientationHelper.getDecoratedStart(child) + mOrientationHelper.startAfterPadding
+            }
         }
         mLayoutState.mAvailable = requiredSpace
-        if (canUseExistingSpace) {
-            mLayoutState.mAvailable -= scrollingOffset
+        scrollingOffset?.let {
+            if (canUseExistingSpace) {
+                mLayoutState.mAvailable -= scrollingOffset
+            }
+            mLayoutState.mScrollingOffset = scrollingOffset
         }
-        mLayoutState.mScrollingOffset = scrollingOffset
     }
 
-    private fun getChildClosestToStart(): View {
+    private fun getChildClosestToStart(): View? {
         return getChildAt(if (mShouldReverseLayout) childCount - 1 else 0)
     }
 
-    private fun getChildClosestToEnd(): View {
+    private fun getChildClosestToEnd(): View? {
         return getChildAt(if (mShouldReverseLayout) 0 else childCount - 1)
     }
 

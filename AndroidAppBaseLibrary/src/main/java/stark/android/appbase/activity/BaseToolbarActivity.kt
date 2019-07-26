@@ -1,9 +1,8 @@
 package stark.android.appbase.activity
 
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.TextView
-import stark.android.appbase.R
+import androidx.appcompat.widget.Toolbar
 
 /**
  * Created by jihongwen on 16/8/4.

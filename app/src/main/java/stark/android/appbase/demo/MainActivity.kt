@@ -1,8 +1,8 @@
 package stark.android.appbase.demo
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.View
+import androidx.fragment.app.Fragment
 
 import stark.android.appbase.activity.BaseToolbarActivity
 import stark.android.appbase.activity.setToolbar

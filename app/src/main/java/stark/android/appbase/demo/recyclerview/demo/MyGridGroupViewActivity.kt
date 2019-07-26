@@ -3,9 +3,9 @@ package stark.android.appbase.demo.recyclerview.demo
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_grid_group_demo.*
 import kotlinx.android.synthetic.main.activity_my_grid_group_demo.*
-import org.jetbrains.anko.toast
 import stark.android.appbase.activity.BaseToolbarActivity
 import stark.android.appbase.activity.setToolbar
 import stark.android.appbase.demo.R
@@ -26,7 +26,7 @@ class MyGridGroupViewActivity : BaseToolbarActivity() {
         myGridGroupDemo.setOnItemClickListener(object : MyGridGroupView.OnItemClickListener {
             override fun onItemClick(view: View, index: Int) {
                 val itemText = view.findViewById<TextView>(R.id.itemText)
-                toast("click " + itemText.text)
+                Toast.makeText(this@MyGridGroupViewActivity, "click " + itemText.text, Toast.LENGTH_SHORT).show()
             }
         })
         myGridGroupDemo.setOnPageChangeListener(object : MyGridGroupView.OnPageChangeListener {

@@ -6,7 +6,6 @@ import android.animation.ValueAnimator
 import android.content.ClipData
 import android.content.Context
 import android.graphics.*
-import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.util.Log
 import android.view.*
@@ -17,6 +16,7 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.TranslateAnimation
 import android.widget.Adapter
 import android.widget.Scroller
+import androidx.core.view.ViewCompat
 
 open class MyGridGroupView : ViewGroup {
 

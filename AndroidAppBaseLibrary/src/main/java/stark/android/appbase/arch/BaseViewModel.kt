@@ -1,8 +1,8 @@
 package stark.android.appbase.arch
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.content.res.Resources
+import androidx.lifecycle.AndroidViewModel
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application), IBaseLoadData {
 

@@ -1,11 +1,12 @@
 package stark.android.appbase.dialog;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
 
 import stark.android.appbase.R;
 

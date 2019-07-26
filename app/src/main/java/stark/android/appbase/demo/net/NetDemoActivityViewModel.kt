@@ -1,7 +1,7 @@
 package stark.android.appbase.demo.net
 
 import android.app.Application
-import android.databinding.ObservableField
+import androidx.databinding.ObservableField
 import com.google.gson.Gson
 import okhttp3.ResponseBody
 import retrofit2.Call

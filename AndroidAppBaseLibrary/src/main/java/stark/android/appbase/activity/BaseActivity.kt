@@ -1,7 +1,7 @@
 package stark.android.appbase.activity
 
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import stark.android.appbase.R
 
 /**
@@ -19,7 +19,7 @@ open class BaseActivity : AppCompatActivity() {
                 .add(resId, fragment, tag).commit()
     }
 
-    fun findFragment(tag: String): Fragment {
+    fun findFragment(tag: String): Fragment? {
         return supportFragmentManager.findFragmentByTag(tag)
     }
 }

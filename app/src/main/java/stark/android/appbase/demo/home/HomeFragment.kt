@@ -1,15 +1,13 @@
 package stark.android.appbase.demo.home
 
 import android.content.Intent
-import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration
-import org.jetbrains.anko.toast
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import stark.android.appbase.demo.R
 import stark.android.appbase.demo.databinding.FragmentHomeBinding
 import stark.android.appbase.fragment.BaseFragment
@@ -22,7 +20,7 @@ class HomeFragment : BaseFragment(), HomeListItemListener {
             intent.setClassName(context, homeItem.activity)
             startActivity(intent)
         } else {
-            activity?.toast("activity is empty! don't know where to go")
+            Toast.makeText(context, "activity is empty! don't know where to go", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -38,10 +36,10 @@ class HomeFragment : BaseFragment(), HomeListItemListener {
         super.onViewCreated(view, savedInstanceState)
         mBinding.homeListView.layoutManager = LinearLayoutManager(context)
         mBinding.homeListView.adapter = HomeListViewAdapter(context).apply { listener = this@HomeFragment }
-        mBinding.homeListView.addItemDecoration(HorizontalDividerItemDecoration.Builder(context)
-                .color(ContextCompat.getColor(context!!, R.color.sk_base_divider_color))
-                .showLastDivider()
-                .build())
+//        mBinding.homeListView.addItemDecoration(HorizontalDividerItemDecoration.Builder(context)
+//                .color(ContextCompat.getColor(context!!, R.color.sk_base_divider_color))
+//                .showLastDivider()
+//                .build())
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -2,13 +2,13 @@ package stark.android.appbase.demo.recyclerview.demo
 
 import android.graphics.Canvas
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
-import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.StaggeredGridLayoutManager
-import android.support.v7.widget.helper.ItemTouchHelper
-import android.support.v7.widget.helper.ItemTouchHelper.ACTION_STATE_IDLE
+import androidx.recyclerview.widget.RecyclerView
 import android.util.Log
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.ItemTouchHelper.ACTION_STATE_IDLE
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import kotlinx.android.synthetic.main.activity_recycler_grid_layout_manager_demo.*
 import stark.android.appbase.activity.BaseToolbarActivity
 import stark.android.appbase.activity.setToolbar
@@ -35,10 +35,10 @@ class RecycleGridLayoutManagerDemoActivity : BaseToolbarActivity() {
                 return true
             }
 
-            override fun onChildDraw(c: Canvas?, recyclerView: RecyclerView?, viewHolder: RecyclerView.ViewHolder?, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+            override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
                 if (!isCurrentlyActive) {
-                    viewHolder?.itemView?.setBackgroundColor(ContextCompat.getColor(this@RecycleGridLayoutManagerDemoActivity, R.color.demo_grid_item_color))
+                    viewHolder.itemView.setBackgroundColor(ContextCompat.getColor(this@RecycleGridLayoutManagerDemoActivity, R.color.demo_grid_item_color))
                 }
                 Log.d("jihongwen", "onChildDraw dX=$dX dY=$dY actionState=$actionState isCurrentlyActive=$isCurrentlyActive")
             }
@@ -50,7 +50,7 @@ class RecycleGridLayoutManagerDemoActivity : BaseToolbarActivity() {
                 }
             }
 
-            override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder?): Int {
+            override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
                 return if (recyclerView.layoutManager is GridLayoutManager || recyclerView.layoutManager is StaggeredGridLayoutManager) {
                     val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
                     //不需要滑动

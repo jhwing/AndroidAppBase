@@ -1,11 +1,11 @@
 package stark.android.appbase.demo.net
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import stark.android.appbase.demo.R
 import stark.android.appbase.demo.databinding.FragmentNetDemoBinding
 import stark.android.appbase.fragment.BaseFragment

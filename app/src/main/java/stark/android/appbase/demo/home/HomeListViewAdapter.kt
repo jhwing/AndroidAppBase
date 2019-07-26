@@ -1,7 +1,7 @@
 package stark.android.appbase.demo.home
 
 import android.content.Context
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.view.ViewGroup
 import stark.android.appbase.demo.R
 import stark.android.appbase.demo.databinding.ItemViewHomeBinding

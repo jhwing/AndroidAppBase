@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="stark.android.appbase.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString"
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

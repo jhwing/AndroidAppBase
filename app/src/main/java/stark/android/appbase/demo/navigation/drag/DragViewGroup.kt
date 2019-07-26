@@ -6,13 +6,13 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Rect
-import android.support.v4.view.ViewCompat
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.widget.FrameLayout
+import androidx.core.view.ViewCompat
 
 /**
  * 简单拖拽实现
@@ -81,8 +81,8 @@ class DragViewGroup @JvmOverloads constructor(
                 val deltaX = event.x - mLastPointX
                 val deltaY = event.y - mLastPointY
                 if (mState == State.DRAGGING && mDragView != null && (Math.abs(deltaX) > mSlop || Math.abs(deltaY) > mSlop)) {
-                    ViewCompat.offsetLeftAndRight(mDragView, deltaX.toInt())
-                    ViewCompat.offsetTopAndBottom(mDragView, deltaY.toInt())
+                    ViewCompat.offsetLeftAndRight(mDragView!!, deltaX.toInt())
+                    ViewCompat.offsetTopAndBottom(mDragView!!, deltaY.toInt())
                     mLastPointX = event.x
                     mLastPointY = event.y
                 }

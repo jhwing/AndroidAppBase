@@ -2,9 +2,9 @@ package stark.android.appbase.demo.recyclerview.demo
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_grid_view_list.*
 import stark.android.appbase.activity.BaseToolbarActivity
 import stark.android.appbase.demo.R
