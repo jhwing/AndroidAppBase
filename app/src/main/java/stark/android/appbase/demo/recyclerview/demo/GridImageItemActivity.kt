@@ -30,7 +30,10 @@ class GridImageItemActivity : BaseToolbarActivity() {
                 "http://img.pptjia.com/image/20180117/16e6d1b2adcb7796e411899957f5f686.jpg",
                 "http://img.pptjia.com/image/20180117/767f4b74a8d7b453b149430ee364c9ce.jpg",
                 "http://img.pptjia.com/image/20180117/f4b76385a3ccdbac48893cc6418806d5.jpg",
-                "http://a.hiphotos.baidu.com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg",
+                "https://p9.pstatp.com/weili/l/79054052830405574.webp",
+                "http://h.hiphotos.baidu.com/image/pic/item/2e2eb9389b504fc292c1b0cfecdde71191ef6d59.jpg",
+                "http://a.hiphotos.baidu.com/image/pic/item/060828381f30e924a0be504446086e061d95f7a9.jpg",
+                "http://b.hiphotos.baidu.com/image/pic/item/18d8bc3eb13533faf3b993e4a1d3fd1f40345be8.jpg",
                 "http://b.hiphotos.baidu.com/image/pic/item/a5c27d1ed21b0ef4e2a263d4d0c451da80cb3ef6.jpg")))
         items.add(GridItem(listOf("http://e.hiphotos.baidu.com/image/pic/item/500fd9f9d72a6059099ccd5a2334349b023bbae5.jpg")))
         items.add(GridItem(listOf("http://c.hiphotos.baidu.com/image/pic/item/d439b6003af33a87b379cc6fcc5c10385343b5ab.jpg")))

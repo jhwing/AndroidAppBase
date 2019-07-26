@@ -11,6 +11,7 @@ import stark.android.appbase.demo.navigation.NavigationDemoActivity
 import stark.android.appbase.demo.net.NetDemoActivity
 import stark.android.appbase.demo.recyclerview.RecycleViewDemoActivity
 import stark.android.appbase.demo.share.ShareDemoActivity
+import stark.android.appbase.demo.textview.TextViewDemoActivity
 import stark.android.appbase.demo.utils.UtilsDemoActivity
 import stark.android.appbase.demo.viewdraghelper.ViewDragHelperDemoActivity
 import stark.android.appbase.demo.viewpager.ViewPagerDemoActivity
@@ -26,6 +27,11 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
                 "activity 动画切换demo",
                 "左右切换，上下切换，共享元素",
                 AnimEnterExitDemoActivity::class.java.name))
+
+        items.add(HomeItem(
+                "textview demo",
+                "textview",
+                TextViewDemoActivity::class.java.name))
 
         items.add(HomeItem(
                 "recycleview demo",

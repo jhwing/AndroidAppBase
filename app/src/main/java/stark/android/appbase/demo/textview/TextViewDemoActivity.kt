@@ -11,5 +11,7 @@ class TextViewDemoActivity : BaseToolbarActivity() {
         super.onCreate(savedInstanceState)
         setBaseContentView()
         setToolbar("textview demo", true)
+
+        startFragment(TextViewDemeActivityFragment(), "textview_demo")
     }
 }
