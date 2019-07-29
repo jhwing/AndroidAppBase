@@ -32,7 +32,7 @@ dependencies {
     androidTestImplementation rootProject.espressoCorex
     implementation rootProject.ext.timber
     api rootProject.ext.appcompatx
-    implementation 'androidx.core:core-ktx:1.0.0'
+    implementation rootProject.ext.ktx
 
     implementation project(":AndroidAppBaseLibrary")
 }

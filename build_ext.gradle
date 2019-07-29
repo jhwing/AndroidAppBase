@@ -10,6 +10,7 @@ ext {
 
     // androidx
     androidxVersion = "1.0.0"
+    ktx = "androidx.core:core-ktx:$androidxVersion"
     appcompatx = "androidx.appcompat:appcompat:$androidxVersion"
     cardviewvx = "androidx.cardview:cardview:$androidxVersion"
     recyclerviewx = "androidx.recyclerview:recyclerview:$androidxVersion"
