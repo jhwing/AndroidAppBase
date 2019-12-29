@@ -37,6 +37,6 @@ public class BaseDialogFragment extends DialogFragment {
         params.width = mWidth;
         window.setAttributes(params);
         window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        window.getDecorView().setPadding(0, 0, 0, 30);
+        window.getDecorView().setPadding(0, 0, 0, 0);
     }
 }

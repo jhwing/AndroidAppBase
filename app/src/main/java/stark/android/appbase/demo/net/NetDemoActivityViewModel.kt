@@ -16,7 +16,7 @@ class NetDemoActivityViewModel(application: Application) : BaseViewModel(applica
 
     var beanString = ObservableField<String>()
 
-    override fun load() {
+    fun load() {
         NetService.instance.today().enqueue(object : Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>?, t: Throwable?) {
 

@@ -5,7 +5,7 @@ import stark.android.appbase.arch.BaseViewModel
 
 class NavigationDemoActivityViewModel(application: Application) : BaseViewModel(application) {
     
-    override fun load() {
+    fun load() {
 
     }
 }

@@ -29,7 +29,7 @@ class MainActivity : BaseToolbarActivity(), NavigationLayout.OnNavigationTabClic
         navigationLayout.setSelectedView(R.id.tabHome)
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         fragmentHelper.saveState(outState)
     }

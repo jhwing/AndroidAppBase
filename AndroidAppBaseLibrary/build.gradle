@@ -3,6 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
@@ -50,6 +54,7 @@ dependencies {
     api rootProject.ext.fresco
     api rootProject.ext.frescoGif
     api rootProject.ext.frescoOkHttp3
+    implementation rootProject.ext.kotlinxcoroutinescore
 }
 repositories {
     mavenCentral()

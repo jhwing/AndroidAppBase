@@ -21,7 +21,7 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     var items = ObservableArrayList<HomeItem>()
 
-    override fun load() {
+    fun load() {
 
         items.add(HomeItem(
                 "activity 动画切换demo",

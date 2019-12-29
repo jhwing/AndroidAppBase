@@ -8,7 +8,7 @@ class RecycleViewDemoActivityViewModel(application: Application) : BaseViewModel
 
     var items = ObservableArrayList<RecycleDemoItem>()
 
-    override fun load() {
+    fun load() {
 
     }
 

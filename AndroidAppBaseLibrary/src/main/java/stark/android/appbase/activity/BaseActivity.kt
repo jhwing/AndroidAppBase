@@ -16,7 +16,7 @@ open class BaseActivity : AppCompatActivity() {
 
     fun startFragment(fragment: Fragment, resId: Int, tag: String) {
         supportFragmentManager.beginTransaction()
-                .add(resId, fragment, tag).commit()
+                .replace(resId, fragment, tag).commit()
     }
 
     fun findFragment(tag: String): Fragment? {
