@@ -7,6 +7,7 @@ ext {
     supportLibraryVersion = '28.+'
     lifecycleVersion = "1.1.1"
     roomVersion = "1.1.0"
+    nav_version = "2.1.0"
 
     kotlinxcoroutinescore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
     // androidx
@@ -24,6 +25,9 @@ ext {
     androidxArchLifecycleRuntime = "androidx.lifecycle:lifecycle-runtime:2.0.0-rc01"
     androidxArchRoomCommon = "androidx.room:room-common:2.0.0-rc01"
     androidxArchRoomCompiler = "androidx.room:room-compiler:2.0.0-rc01"
+
+    navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    navigationuiKtx = "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // support and test
     junitTest = 'junit:junit:4.12'

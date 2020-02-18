@@ -48,6 +48,9 @@ dependencies {
     annotationProcessor rootProject.ext.androidxArchRoomCompiler
     kapt rootProject.ext.androidxArchRoomCompiler
 
+    api rootProject.ext.navigationFragmentKtx
+    api rootProject.ext.navigationuiKtx
+
     api rootProject.ext.okhttp3LoggingInterceptor
     api rootProject.ext.retrofit
     api rootProject.ext.retrofitConverterGson
