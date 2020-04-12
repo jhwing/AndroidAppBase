@@ -1,6 +1,7 @@
 package stark.android.appbase.fragment;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,7 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class FragmentHelper {
 
-    String currentTag = "";
+    public String currentTag = "";
 
     FragmentFactory factory;
 
@@ -16,14 +17,26 @@ public class FragmentHelper {
         this.factory = factory;
     }
 
-    public void resume(Bundle savedInstanceState) {
+    public String resume(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            currentTag = savedInstanceState.getString("currentTag", "");
+            this.currentTag = savedInstanceState.getString("currentTag", "");
+            return this.currentTag;
+        } else {
+            return this.currentTag;
         }
     }
 
     public void saveState(Bundle outState) {
         outState.putString("currentTag", currentTag);
+    }
+
+    public void changeFragment(String newTag, FragmentManager fragmentManager, Bundle savedInstanceState) {
+        String resumeTag = this.resume(savedInstanceState);
+        if (TextUtils.isEmpty(resumeTag)) {
+            resumeTag = newTag;
+        }
+
+        this.changeFragment(resumeTag, fragmentManager);
     }
 
     public void changeFragment(String newTag, FragmentManager fragmentManager) {

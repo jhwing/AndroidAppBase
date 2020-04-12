@@ -10,13 +10,13 @@ import stark.android.appbase.R
 
 open class BaseActivity : AppCompatActivity() {
 
-    fun startFragment(fragment: Fragment, tag: String) {
+    fun startFragment(fragment: Fragment, tag: String = "fragment_tag") {
         startFragment(fragment, R.id.fragment_container, tag)
     }
 
     fun startFragment(fragment: Fragment, resId: Int, tag: String) {
         supportFragmentManager.beginTransaction()
-                .replace(resId, fragment, tag).commit()
+            .replace(resId, fragment, tag).commit()
     }
 
     fun findFragment(tag: String): Fragment? {

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 
-class NavigationLayout @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr), View.OnClickListener {
+open class NavigationLayout @JvmOverloads constructor(context: Context?, attrs: AttributeSet? = null, defStyleAttr: Int = 0) : LinearLayout(context, attrs, defStyleAttr), View.OnClickListener {
 
     private var onNavigationTabClickListener: OnNavigationTabClickListener? = null
 
